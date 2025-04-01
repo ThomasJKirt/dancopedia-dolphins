@@ -28,6 +28,7 @@ if (!isset($_SESSION["user_name"]) && !isset($_SESSION["admin_name"])) {
                     <li><a href="../public/danceCategories.html" class="nav-link px-2" style="color: darkgreen;">Categories</a></li>
                     <li><a href="../public/regions.html" class="nav-link px-2" style="color: darkgreen;">Regions</a></li>
                     <li><a href="createDance.php" class="nav-link px-2" style="color: darkgreen;">Create A Dance</a></li>
+                    <li><a href="feedback.html" class="nav-link px-2" style="color: darkgreen;">Feedback</a></li>
                 </ul>
 
                 <!-- Search Box -->
