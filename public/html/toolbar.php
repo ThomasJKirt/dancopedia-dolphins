@@ -33,7 +33,7 @@ if (!isset($_SESSION["user_name"]) && !isset($_SESSION["admin_name"])) {
 
                 <!-- Search Box -->
                 <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <form action="../search.html" method="get" class="d-flex" onsubmit="return handleSearch(event)">
+                    <form action="../public/search.html" method="get" class="d-flex" onsubmit="return handleSearch(event)">
                         <input type="text" name="q" id="toolbarSearchInput" class="form-control" placeholder="Search..." aria-label="Search">
                         <button type="submit" class="btn btn-light" style="border-color: #FFDF00; color: #FFDF00; margin-left: 5px;">Go</button>
                     </form>
@@ -54,7 +54,7 @@ if (!isset($_SESSION["user_name"]) && !isset($_SESSION["admin_name"])) {
                 <div class="text-end">
                     <button type="button" class="btn btn-outline-light me-2" onclick="window.location.href='login.php'">Login</button>
                     <button type="button" class="btn"
-                            style="background-color: lightgreen; color: darkgreen; border-color: darkgreen;">Sign-up</button>
+                            style="background-color: lightgreen; color: darkgreen; border-color: darkgreen;" onclick="window.location.href='signup.php'">Sign-up</button>
                     <button type="button" class="btn btn-outline-light me-2">Settings</button>
                 </div>
 

@@ -53,12 +53,20 @@
       loadDances("Bahia", null);
     });
   </script>
+      <!-- Adds event listener for user clicking on dance card which stores dance ID and sends the user to dance page-->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      fetch("html/toolbar.html")
+      fetch("html/toolbar.php")
               .then(response => response.text())
               .then(data => document.getElementById("toolbar-container").innerHTML = data);
     });
+    document.addEventListener("click", function(e) {
+            const card = e.target.closest(".dance");
+            if (card) {
+            const danceId = card.getAttribute("data-dance-id");
+            window.location.href = `dancePage.html?danceId=${danceId}`;
+            }
+  });
   </script>
 
 </body>
