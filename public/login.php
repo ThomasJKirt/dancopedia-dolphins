@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,29 +40,32 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="../public/css/Login.css">
 </head>
+
 <body>
 
-<div class="form-container">
+    <div class="form-container">
 
-    <form action="" method="post">
-        <h3>login now</h3>
-        <?php
-        if (isset($error)) {
-            foreach ($error as $error) {
-                echo '<span class="error-msg">' . $error . '</span>';
+        <form action="send_password.php" method="post">
+            <h3>login now</h3>
+            <?php
+            if (isset($error)) {
+                foreach ($error as $error) {
+                    echo '<span class="error-msg">' . $error . '</span>';
+                };
             };
-        };
-        ?>
-        <input type="text" name="username" required placeholder="enter your username">
-        <input type="password" name="password" required placeholder="enter your password">
-        <input type="submit" name="submit" value="login now" class="form-btn">
-        <p>don't have an account? <a href="register_form.php">register now</a></p>
-    </form>
+            ?>
+            <input type="text" name="username" required placeholder="enter your username">
+            <input type="password" name="password" required placeholder="enter your password">
+            <input type="submit" name="submit" value="login now" class="form-btn">
+            <p>don't have an account? <a href="register_form.php">register now</a></p>
+            <p>forgot password? <a href="forgot_password.php">reset here</a></p>
+        </form>
 
-    <!-- Back Button -->
-    <button type="button" onclick="window.location.href='index.html'" class="back-btn">Back</button>
+        <!-- Back Button -->
+        <button type="button" onclick="window.location.href='index.html'" class="back-btn">Back</button>
 
-</div>
+    </div>
 
 </body>
+
 </html>
