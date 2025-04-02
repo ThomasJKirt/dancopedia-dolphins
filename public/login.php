@@ -15,6 +15,7 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result);
+        $_SESSION['username'] = $row['username'];
         if ($row['user_type'] == 'admin') {
             $_SESSION['admin_name'] = $row['username'];
             header('location:adminhome.php');
@@ -56,6 +57,7 @@ if (isset($_POST['submit'])) {
         <input type="password" name="password" required placeholder="enter your password">
         <input type="submit" name="submit" value="login now" class="form-btn">
         <p>don't have an account? <a href="register_form.php">register now</a></p>
+        <p>forgot password? <a href="forgot_password.php">reset here</a></p>
     </form>
 
     <!-- Back Button -->

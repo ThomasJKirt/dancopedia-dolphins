@@ -4,12 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Brazil</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/Home.css">
-
   <style>
     .background {
       background-image: url('assets/images/brazil_background.jpg');
@@ -26,7 +24,6 @@
       flex-direction: column;
       padding-top: 50px;
     }
-
     .welcome-box {
       background: rgba(255, 255, 255, 0.8);
       padding: 20px;
@@ -38,16 +35,14 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       margin-top: 20px;
     }
-
     .button-container {
       margin-top: 20px;
     }
   </style>
 </head>
-
 <body>
 <div id="toolbar-container"></div>
-<!--ChatBox-->
+<!-- ChatBox -->
 <div id="chatbox-container"></div>
 <section class="one">
   <div class="background">
@@ -55,19 +50,15 @@
     <div class="welcome-box">
       <p>Experience the vibrant energy of Brazilian dance! From the rhythmic beats of Samba to the passionate moves of Forró, immerse yourself in a culture filled with movement, joy, and tradition. Let’s dance!</p>
     </div>
-    <!-- Big link buttons for Categories and Regions -->
     <div class="button-container">
       <a href="danceCategories.html" class="btn btn-primary btn-lg me-2">Categories</a>
       <a href="regions.html" class="btn btn-secondary btn-lg">Regions</a>
       <a href="map.html" class="btn btn-secondary btn-lg">Map</a>
     </div>
-
-    <!-- Feedback Button (Visible Only to Logged-in Users) -->
-    <?php
-     if (isset($_SESSION['username'])): ?>
-      <div class="mt-3">
-        <a href="feedback.php" class="btn btn-success btn-lg">Give Feedback</a>
-      </div>
+    <?php if (isset($_SESSION['username'])): ?>
+    <div class="mt-3">
+      <a href="feedback.php" class="btn btn-success btn-lg">Give Feedback</a>
+    </div>
     <?php endif; ?>
     <div id="danceContainer" class="scrolling"></div>
   </div>
@@ -75,14 +66,25 @@
 <section class="two"></section>
 <section class="three"></section>
 
-<!-- Load Toolbar -->
+<<!-- Load Bootstrap bundle first -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
 <script>
+  /* global bootstrap */
   document.addEventListener("DOMContentLoaded", function() {
     fetch("html/toolbar.php")
             .then(response => response.text())
-            .then(data => document.getElementById("toolbar-container").innerHTML = data);
+            .then(data => {
+              document.getElementById("toolbar-container").innerHTML = data;
+              // Reinitialize dropdowns for dynamically added content
+              var dropdownElements = document.querySelectorAll('.dropdown-toggle');
+              dropdownElements.forEach(function(dropdownToggleEl) {
+                new bootstrap.Dropdown(dropdownToggleEl);
+              });
+            });
   });
 </script>
+
 
 <!-- Load Chatbox -->
 <script>
@@ -104,6 +106,5 @@
     loadDances(null, null);
   });
 </script>
-
 </body>
 </html>

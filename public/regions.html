@@ -54,6 +54,24 @@
       </div>
     <section class="two"></section>
     <section class="three"></section>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+      <script>
+        /* global bootstrap */
+        document.addEventListener("DOMContentLoaded", function() {
+          fetch("html/toolbar.php")
+                  .then(response => response.text())
+                  .then(data => {
+                    document.getElementById("toolbar-container").innerHTML = data;
+                    // Reinitialize dropdowns for dynamically added content
+                    var dropdownElements = document.querySelectorAll('.dropdown-toggle');
+                    dropdownElements.forEach(function(dropdownToggleEl) {
+                      new bootstrap.Dropdown(dropdownToggleEl);
+                    });
+                  });
+        });
+      </script>
       <!-- Load Chatbox -->
       <script>
         fetch('html/chatbox.html')
@@ -68,14 +86,7 @@
                 .catch(error => console.error('Error loading chatbox:', error));
       </script>
 
-      <!-- JavaScript element -->
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          fetch("html/toolbar.php")
-                  .then(response => response.text())
-                  .then(data => document.getElementById("toolbar-container").innerHTML = data);
-        });
-      </script>
+
       
       <script src="../public/js/chatbox.js"></script>
   

@@ -32,16 +32,22 @@ $isAdmin = isset($_SESSION["admin_name"]);
 
   <div id="chatbox-container"></div>
 
-  <!-- Load Toolbar -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      fetch("html/toolbar.php")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("toolbar-container").innerHTML = data;
-        })
-        .catch(error => console.error("Error loading toolbar:", error));
-    });
+      /* global bootstrap */
+      document.addEventListener("DOMContentLoaded", function() {
+          fetch("html/toolbar.php")
+              .then(response => response.text())
+              .then(data => {
+                  document.getElementById("toolbar-container").innerHTML = data;
+                  // Reinitialize dropdowns for dynamically added content
+                  var dropdownElements = document.querySelectorAll('.dropdown-toggle');
+                  dropdownElements.forEach(function(dropdownToggleEl) {
+                      new bootstrap.Dropdown(dropdownToggleEl);
+                  });
+              });
+      });
   </script>
 
   <!-- Load Chatbox -->

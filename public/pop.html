@@ -49,12 +49,21 @@
         loadDances(null, "Pop");
     });
 </script>
-<!-- Adds event listener for user clicking on dance card which stores dance ID and sends the user to dance page-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
 <script>
+    /* global bootstrap */
     document.addEventListener("DOMContentLoaded", function() {
         fetch("html/toolbar.php")
             .then(response => response.text())
-            .then(data => document.getElementById("toolbar-container").innerHTML = data);
+            .then(data => {
+                document.getElementById("toolbar-container").innerHTML = data;
+                // Reinitialize dropdowns for dynamically added content
+                var dropdownElements = document.querySelectorAll('.dropdown-toggle');
+                dropdownElements.forEach(function(dropdownToggleEl) {
+                    new bootstrap.Dropdown(dropdownToggleEl);
+                });
+            });
     });
     document.addEventListener("click", function(e) {
     const card = e.target.closest(".dance");
