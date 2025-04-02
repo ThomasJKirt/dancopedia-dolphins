@@ -6,137 +6,218 @@
   <title>Dance Search</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #333;
       text-align: center;
-      padding: 20px;
     }
 
-    #danceContainer {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .dance {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin: 10px;
-      width: 300px;
-      text-align: left;
-    }
-
-    .dance img {
-      max-width: 100%;
-      height: auto;
+    h3 {
+      color: #555;
+      margin-top: 40px;
+      text-align: center;
     }
 
     .search-container {
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"] {
+      padding: 10px 15px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
     }
 
     .search-container img {
-      width: 20px;
-      height: 20px;
-      margin-left: 10px;
+      width: 24px;
+      height: 24px;
       cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .search-container img:hover {
+      transform: scale(1.1);
+    }
+
+    #danceContainer {
+      margin: 30px auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1200px;
+      padding: 0 15px;
+    }
+
+    .dance {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 15px;
+      width: 280px;
+      text-align: left;
+      transition: transform 0.2s;
+    }
+
+    .dance:hover {
+      transform: translateY(-5px);
+    }
+
+    .dance img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .danceName {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .danceDescription,
+    .danceRegion,
+    .danceCategory {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .danceRegion strong,
+    .danceCategory strong {
+      color: #222;
+    }
+
+    p {
+      margin: 0;
     }
   </style>
 </head>
 
 <body>
-  <h2>Search</h2>
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Enter dance name...">
-    <img src="assets/images/search_icon.png.png" alt="Search" onclick="searchDance()">
-    <button onclick="searchDance()">Search</button>
-    <button onclick="goBack()">Back</button>
-  </div>
+<h2>Search</h2>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Enter dance name...">
+  <img src="assets/images/search_icon.png.png" alt="Search" onclick="searchDance()">
+  <button onclick="searchDance()">Search</button>
+  <button onclick="goBack()">Back</button>
+</div>
 
-  <h3>Results</h3>
-  <div id="danceContainer"></div>
+<h3>Results</h3>
+<div id="danceContainer"></div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const query = getQueryParam("q");
-      if (query) {
-        document.getElementById("searchInput").value = query;
-        searchDance(); // Auto-search when page loads with a query
-      }
-    });
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const query = getQueryParam("q");
+    if (query) {
+      document.getElementById("searchInput").value = query;
+      searchDance();
+    }
+  });
 
-    function getQueryParam(name) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(name);
+  function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+  }
+
+  function searchDance() {
+    const query = document.getElementById("searchInput").value.trim();
+    if (!query) {
+      document.getElementById("danceContainer").innerHTML = "<p>Please enter a search term.</p>";
+      return;
     }
 
-    function escapeHtml(str) {
-      if (!str) return "";
-      return str.replace(/&/g, "&amp;")
-              .replace(/</g, "&lt;")
-              .replace(/>/g, "&gt;")
-              .replace(/"/g, "&quot;")
-              .replace(/'/g, "&#039;");
-    }
+    fetch("../src/api/dance_search.php?search=" + encodeURIComponent(query))
+            .then(response => response.json())
+            .then(data => {
+              const danceContainer = document.getElementById("danceContainer");
+              danceContainer.innerHTML = "";
 
-    function searchDance() {
-      const query = document.getElementById("searchInput").value.trim();
-      if (!query) {
-        document.getElementById("danceContainer").innerHTML = "<p>Please enter a search term.</p>";
-        return;
-      }
+              if (data && data.length) {
+                data.forEach(dance => {
+                  const imageHtml = dance.media_url
+                          ? `<img src="${escapeHtml(dance.media_url)}" alt="${escapeHtml(dance.alttext)}">`
+                          : "<p>No Image Available</p>";
 
-      fetch("../src/api/dance_search.php?search=" + encodeURIComponent(query))
-              .then(response => response.json())
-              .then(data => {
-                const danceContainer = document.getElementById("danceContainer");
-                danceContainer.innerHTML = ""; // Clear existing content
+                  const descriptionHtml = dance.description
+                          ? `<p class="danceDescription">${escapeHtml(dance.description)}</p>`
+                          : "<p class='danceDescription'>No description available</p>";
 
-                if (data && data.length) {
-                  data.forEach(dance => {
-                    const imageHtml = dance.media_url
-                            ? `<img src="${escapeHtml(dance.media_url)}" alt="${escapeHtml(dance.alttext)}">`
-                            : "<p>No Image Available</p>";
+                  const regionHtml = dance.region
+                          ? `<p class="danceRegion"><strong>Region:</strong> ${escapeHtml(dance.region)}</p>`
+                          : "<p class='danceRegion'><strong>Region:</strong> Unknown</p>";
 
-                    const descriptionHtml = dance.description
-                            ? `<p class="danceDescription">${escapeHtml(dance.description)}</p>`
-                            : "<p class='danceDescription'>No description available</p>";
+                  const categoryHtml = dance.category
+                          ? `<p class="danceCategory"><strong>Category:</strong> ${escapeHtml(dance.category)}</p>`
+                          : "<p class='danceCategory'><strong>Category:</strong> Uncategorized</p>";
 
-                    const regionHtml = dance.region
-                            ? `<p class="danceRegion"><strong>Region:</strong> ${escapeHtml(dance.region)}</p>`
-                            : "<p class='danceRegion'><strong>Region:</strong> Unknown</p>";
+                  const danceCard = `
+                <div class="dance">
+                  <h3 class="danceName">${escapeHtml(dance.dance_name)}</h3>
+                  ${imageHtml}
+                  ${descriptionHtml}
+                  ${regionHtml}
+                  ${categoryHtml}
+                </div>
+              `;
+                  danceContainer.insertAdjacentHTML("beforeend", danceCard);
+                });
+              } else {
+                danceContainer.innerHTML = "<p>No dances found.</p>";
+              }
+            })
+            .catch(() => {
+              document.getElementById("danceContainer").innerHTML = "<p>Error loading data.</p>";
+            });
+  }
 
-                    const categoryHtml = dance.category
-                            ? `<p class="danceCategory"><strong>Category:</strong> ${escapeHtml(dance.category)}</p>`
-                            : "<p class='danceCategory'><strong>Category:</strong> Uncategorized</p>";
-
-                    const danceCard = `
-            <div class="dance">
-              <h3 class="danceName">${escapeHtml(dance.dance_name)}</h3>
-              ${imageHtml}
-              ${descriptionHtml}
-              ${regionHtml}
-              ${categoryHtml}
-            </div>
-          `;
-                    danceContainer.insertAdjacentHTML("beforeend", danceCard);
-                  });
-                } else {
-                  danceContainer.innerHTML = "<p>No dances found.</p>";
-                }
-              })
-              .catch(() => {
-                document.getElementById("danceContainer").innerHTML = "<p>Error loading data.</p>";
-              });
-    }
-
-    function goBack() {
-      window.history.back();
-    }
-
-  </script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
 </body>
 
 </html>

@@ -76,121 +76,48 @@ section {
 }
 
 
-/* Dance Container Styles */
-.danceContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-    padding: 20px;
-}
-
-.dance {
-    width: 200px;
-    background-color: rgba(200, 160, 255, 0.8);
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.dance:hover {
-    background-color: rgba(180, 140, 235, 0.9);
-}
-
-.dance img {
-    width: 100%;
-    height: 150px;
-    border-radius: 10px;
-}
-
-.dance-gallery img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-}
-
-/* Chatbox Styles */
-a.nav-link {
-    color: gray;
-    font-size: 18px;
-    padding: 0;
-}
-
-.avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #e84118;
-    padding: 2px;
-}
-
-.message-container {
-    height: 500px;
-    overflow-y: auto;
-    padding: 10px;
-}
-
-.message {
-    max-width: 70%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.incoming {
-    background-color: #f1f1f1;
-    align-self: flex-start;
-}
-
-.outgoing {
-    background-color: #007bff;
-    color: white;
-    align-self: flex-end;
-}
-
-.input-area {
-    border-top: 1px solid #ddd;
-    padding: 10px;
-    background-color: #f9f9f9;
+/* Only apply scrolling styles when #danceContainer has the "scrolling" class */
+#danceContainer.scrolling {
+    overflow: hidden;
     position: relative;
-    z-index: 1000;
-}
-
-.input-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.form-control {
-    flex: 1;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    padding: 10px 15px;
-    margin-right: 10px;
-    font-size: 14px;
-    outline: none;
-}
-
-.form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-
-.fixed-state {
-    position: fixed;
-    bottom: 0;
-    left: 500px;
     width: 100%;
-    text-align: center;
-    padding: 10px;
-    z-index: 1000;
-
-
 }
+
+/* The dance-wrapper holds all dance cards in one long row */
+#danceContainer.scrolling .dance-wrapper {
+    display: flex;
+    width: max-content;
+    animation: scroll-dances 30s linear infinite;
+}
+
+/* Animation keyframes for scrolling from right to left */
+@keyframes scroll-dances {
+    0% {
+        transform: translateX(100vw);
+    }
+    100% {
+        transform: translateX(calc(-100% - 100vw));
+    }
+}
+
+/* Smaller dance card style for the scrolling view */
+#danceContainer.scrolling .dance {
+    flex: 0 0 auto;
+    width: 200px;
+    margin-top: 30px;
+    margin-right: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    overflow: hidden;
+    padding: 5px;
+}
+
+/* Ensure images within dance cards fit nicely */
+#danceContainer.scrolling .dance img {
+    width: 100%;
+    height: auto;
+}
+
 

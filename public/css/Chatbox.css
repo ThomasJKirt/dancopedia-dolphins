@@ -69,13 +69,11 @@ a.nav-link {
 
 .fixed-state {
   position: fixed;
-  bottom: 0;
-  left: 500px;
-  width: 100%;
-  text-align: center;
-  padding: 10px;
+  bottom: 10px;
+  right: 10px;
   z-index: 1000;
 }
+
 
 .toolBar {
   position: sticky;

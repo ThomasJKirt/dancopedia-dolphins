@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Brazil Map</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .center-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    body {
+      background: linear-gradient(to right, blue, green);
+      margin: 0;
+      padding: 0;
+    }
+    .bander{
+      color:white;
+      font-size: larger;
+    }
+    .pin {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: red;
+      border-radius: 50%;
+      border: 2px solid white;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+    }
+
+    .pin1 { left: 40%; top: 47%; } /* Pins of dance*/
+    .pin2 { left: 60%; top: 50%; }
+    .pin3 { left: 45%; bottom: 40%;}
+    .pin4 { right: 45%; bottom: 50%;}
+    .pin5 { left: 53%; top: 58%;}
+
+
+    .card {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+<div class="center-container">
+  <div class="bander">
+    <h1>Brazil Maps</h1>
+    <p>Click the red pins and find brazil dance from that region:</p>
+    <button onclick="location.href='index.html'" type="button">
+      back</button>
+  </div>
+  <section class="map">
+    <img src="assets/images/brazil-map.jpg" alt="brazil-map" usemap="#brazil-map" width="600" height="600">
+    <map name="brazil-map">
+      <div class="pin pin1" onclick="openDanceCard('Region 1', 'Samba')"></div>
+      <div class="pin pin2" onclick="openDanceCard('Region 2', 'Forró')"></div>
+      <div class="pin pin3" onclick="openDanceCard('Region 3', 'Bossa Nova')"></div>
+      <div class="pin pin4" onclick="openDanceCard('Region 4', 'Rio')"></div>
+      <div class="pin pin5" onclick="openDanceCard('Region 5', 'Rio')"></div>
+    </map>
+  </section>
+  <div id="danceCard" class="card">
+    <h3 id="danceTitle">Dance Title</h3>
+    <p id="danceDescription">Description of the dance.</p>
+    <p id="danceImage">Image of the dance.</p>
+    <button class="close-btn" onclick="closeDanceCard()">Close</button>
+  </div>
+
+</div>
+
+<script>
+  // Function to display the dance card
+  function openDanceCard(region, dance) {
+    document.getElementById("danceTitle").textContent = dance + " from " + region;
+    document.getElementById("danceDescription").textContent = "Learn about " + dance + ", a traditional dance from " + region + ".";
+    document.getElementById("danceCard").style.display = "block";
+  }
+
+  // Function to close the display dance card
+  function closeDanceCard() {
+    document.getElementById("danceCard").style.display = "none";
+  }
+</script>
+</body>
+</html>

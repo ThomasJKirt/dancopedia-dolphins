@@ -1,0 +1,98 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles for a full-height centered layout */
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the form */
+.form-container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+/* Heading style */
+.form-container h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Error message styling */
+.error-msg {
+    display: block;
+    background: #ff4d4d;
+    color: #fff;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Input and select field styling */
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Submit button styling */
+.form-container input[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background: #007BFF;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Hover effect for submit button */
+.form-container input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* Paragraph text styling */
+.form-container p {
+    text-align: center;
+    margin-top: 1rem;
+    color: #555;
+}
+
+/* Link styling */
+.form-container p a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.form-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+    .form-container {
+        width: 90%;
+        padding: 1rem;
+    }
+}

@@ -12,14 +12,16 @@ if ($conn->connect_error) {
 }
 // Read POST data
 $filters = json_decode(file_get_contents("php://input"), true);
+$id = isset($filters['id']) ? (int)$filters['id'] : null;
 $region = isset($filters['region']) ? $conn->real_escape_string($filters['region']) : null;
 $category = isset($filters['category']) ? $conn->real_escape_string($filters['category']) : null;
 
 // Debugging: Log received data
-error_log("Region: " . ($region ?? "NULL") . " | Category: " . ($category ?? "NULL"));
+error_log("ID: " . ($id ?? "NULL") . " | Region: " . ($region ?? "NULL") . " | Category: " . ($category ?? "NULL"));
 
 $sql = "
     SELECT 
+        dances.dance_id,
         dances.dance_name, 
         dances.description, 
         region.region_name, 
@@ -34,6 +36,13 @@ $sql = "
 
 // Apply filters
 $conditions = [];
+
+
+//Checks if these fields are included and not empty to perform the query that meets these conditions
+if (!empty($id)) {
+    $conditions[] = "dances.dance_id = $id";
+}
+
 if (!empty($region)) {
     $conditions[] = "region.region_name = '$region'";
 }
@@ -55,6 +64,7 @@ $dances = [];
 if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $dances[] = [
+            "dance_id" => $row['dance_id'] ?? '',
             "dance_name" => $row['dance_name'] ?? 'Unknown',
             "description" => $row['description'] ?? 'No description available',
             "category" => $row['category_name'] ?? 'Uncategorized',
@@ -69,4 +79,3 @@ if ($result && $result->num_rows > 0) {
 
 echo json_encode($dances);
 $conn->close();
-?>

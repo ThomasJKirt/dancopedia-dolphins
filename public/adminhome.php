@@ -31,9 +31,9 @@ if(!isset($_SESSION["admin_name"]))
         </a>
 
 				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="../../public/index.html" class="nav-link px-2" style="color: darkgreen;">Home</a></li>
-          <li><a href="../../public/danceCategories.html" class="nav-link px-2 text-white">Catagories</a></li>
-          <li><a href="../../public/regions.html" class="nav-link px-2" style="color: darkgreen;">Regions</a></li>
+          <li><a href="index.html" class="nav-link px-2" style="color: darkgreen;">Home</a></li>
+          <li><a href="danceCategories.html" class="nav-link px-2 text-white">Catagories</a></li>
+          <li><a href="regions.html" class="nav-link px-2" style="color: darkgreen;">Regions</a></li>
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -53,7 +53,7 @@ if(!isset($_SESSION["admin_name"]))
             <li><a class="dropdown-item" href="#">Create</a></li>
 						<li><a class="dropdown-item" href="#">Settings</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../../public/logout.php">Sign out</a></li>
+            <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
           </ul>
         </div>
 				
@@ -66,7 +66,7 @@ if(!isset($_SESSION["admin_name"]))
 
 <h1>THIS IS ADMIN HOME PAGE</h1><?php echo $_SESSION["admin_name"] ?>
 
-<a href="../../public/logout.php">Logout</a>
+<a href="logout.php">Logout</a>
 
 </body>
 </html>

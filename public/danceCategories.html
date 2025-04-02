@@ -44,7 +44,7 @@
     
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        fetch("html/toolbar.html")
+        fetch("html/toolbar.php")
                 .then(response => response.text())
                 .then(data => document.getElementById("toolbar-container").innerHTML = data);
       });

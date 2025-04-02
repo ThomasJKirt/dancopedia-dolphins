@@ -143,17 +143,6 @@ body {
     
   }
   
-  .fixed-state {
-    position: fixed;
-    bottom: 0;
-    left: auto;
-    right: 20px;
-    width: auto;
-    text-align: center;
-    padding: 0px;
-    background-color: #fff; 
-  }
-  
   .active-page {
     color: darkgreen !important;
     font-weight: bold;
