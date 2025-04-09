@@ -39,9 +39,24 @@ if (isset($_POST['submit'])) {
     <title>login form</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="../public/css/Login.css">
+    <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    #toolbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* ensures it stays above other content */
+  }
+  </style>
 </head>
 <body>
-
+<div id="toolbar-container"></div>
 <div class="form-container">
 
     <form action="" method="post">
@@ -64,6 +79,24 @@ if (isset($_POST['submit'])) {
     <button type="button" onclick="window.location.href='index.html'" class="back-btn">Back</button>
 
 </div>
+<!-- Load Bootstrap bundle first -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<script>
+    /* global bootstrap */
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch("html/toolbar.php")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("toolbar-container").innerHTML = data;
+                // Reinitialize dropdowns for dynamically added content
+                var dropdownElements = document.querySelectorAll('.dropdown-toggle');
+                dropdownElements.forEach(function(dropdownToggleEl) {
+                    new bootstrap.Dropdown(dropdownToggleEl);
+                });
+            });
+    });
+</script>
 
 </body>
 </html>

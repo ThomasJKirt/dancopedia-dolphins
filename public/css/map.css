@@ -1,0 +1,56 @@
+#toolbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* ensures it stays above other content */
+  }
+  .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+  }
+
+  body {
+    background: linear-gradient(to right, blue, green);
+    margin: 0;
+    padding: 0;
+  }
+  .bander{
+    color:white;
+    font-size: larger;
+  }
+  .pin {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+  }
+
+  .pin1 { left: 40%; top: 47%; } /* Pins of dance*/
+  .pin2 { left: 60%; top: 50%; }
+  .pin3 { left: 45%; bottom: 40%;}
+  .pin4 { right: 45%; bottom: 50%;}
+  .pin5 { left: 53%; top: 58%;}
+
+
+  .card {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }    
