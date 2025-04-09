@@ -15,7 +15,9 @@ session_start();
                     <li><a href="../public/danceCategories.html" class="nav-link px-2" style="color: darkgreen;">Categories</a></li>
                     <li><a href="../public/regions.html" class="nav-link px-2" style="color: darkgreen;">Regions</a></li>
                     <li><a href="createDance.php" class="nav-link px-2" style="color: darkgreen;">Create A Dance</a></li>
-                    <li><a href="feedback.php" class="nav-link px-2" style="color: darkgreen;">Feedback</a></li>
+                    <li><a href="../public/userFeedback.php" class="nav-link px-2" style="color: darkgreen;">Read Feedback</a></li>
+                    <li><a href="feedback.php" class="nav-link px-2" style="color: darkgreen;"> Give Feedback</a></li>
+                    <!-- <li><a href="aboutUs.php" class="nav-link px-2" style="color: darkgreen;">About Us</a></li> -->
                 </ul>
                 <!-- Search Box -->
                 <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -54,7 +56,9 @@ session_start();
                             <li><a class="dropdown-item" href="#">Profile</a></li>
                             <li><a class="dropdown-item" href="#">Saved</a></li>
                             <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="../public/logout.php">Sign out</a></li>
                         </ul>
                     </div>
