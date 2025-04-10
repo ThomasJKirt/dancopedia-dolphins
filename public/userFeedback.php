@@ -1,6 +1,8 @@
 <?php
 session_start();
-$isAdmin = isset($_SESSION["admin_name"]);
+if(!isset($_SESSION["admin_name"])) {
+    header("Location: index.html");
+}
 ?>
 
 <!DOCTYPE html>
