@@ -2,11 +2,12 @@
 A website displaying various Brazil dances.
 
 ## How to run locally:
-1. Install XAMPP along with Apache and MySQL
+1. Ensure XAMPP and [Composer](https://getcomposer.org/download/) are installed
 2. Place project directory within C:\xammp\htdocs, or linux equivalent
-3. Launch MySQL and use database_creation.sql to build database, ensure the port for MySQL on XAMPP is the same in database.php
-4. Launch Apache server module
-5. Go to http://localhost/[local repository name]/public/
+3. In a command line, run `composer update` to get dependencies
+4. Launch MySQL and use database_creation.sql to build database, ensure the port for MySQL on XAMPP is the same in database.php
+5. Launch Apache server module
+6. Go to http://localhost/[local repository name]/public/
 
 
 ## How to run chatbot
