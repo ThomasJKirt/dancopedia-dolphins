@@ -1,11 +1,6 @@
 <?php
-session_start();
-
-
-if(!isset($_SESSION["user_name"]))
-{
-	header("location:login.php");
-}
+require_once '/auth.php';// include the auth script
+requireUser(); // only allow users with 'user' role
 ?>
 
 <!DOCTYPE html>

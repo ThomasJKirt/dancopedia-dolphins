@@ -1,8 +1,6 @@
 <?php
-session_start();
-if(!isset($_SESSION["admin_name"])) {
-    header("location:login.php");
-}
+require_once '/auth.php';// include the auth script
+requireAdmin(); // only allow users with 'admin' role
 ?>
 <!DOCTYPE html>
 <html>

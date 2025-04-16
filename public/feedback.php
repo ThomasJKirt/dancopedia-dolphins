@@ -1,10 +1,9 @@
 <?php
 @include '../src/config/database.php';
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
+
+require_once '/auth.php';// include the auth script
+requireLogin(); // require to login
+
 $success = isset($_GET['success']) && $_GET['success'] == 1;
 ?>
 <!DOCTYPE html>
