@@ -1,5 +1,5 @@
 <?php
-require_once '/auth.php';// include the auth script
+require_once 'auth.php';
 requireAdmin(); // only allow users with 'admin' role
 ?>
 <!DOCTYPE html>

@@ -7,21 +7,21 @@ session_start();
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <!-- Brazil Flag -->
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <img src="assets/images/brazil_flag.jpg" alt="Brazil Flag" style="width: 40px; height: auto; margin-right: 10px;">
+                    <img src="/assets/images/brazil_flag.jpg" alt="Brazil Flag" style="width: 40px; height: auto; margin-right: 10px;">
                 </a>
                 <!-- Navigation Links -->
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="../public/index.html" class="nav-link px-2 text-white">Home</a></li>
-                    <li><a href="../public/danceCategories.html" class="nav-link px-2" style="color: darkgreen;">Categories</a></li>
-                    <li><a href="../public/regions.html" class="nav-link px-2" style="color: darkgreen;">Regions</a></li>
+                    <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="danceCategories.html" class="nav-link px-2" style="color: darkgreen;">Categories</a></li>
+                    <li><a href="regions.html" class="nav-link px-2" style="color: darkgreen;">Regions</a></li>
                     <li><a href="createDance.php" class="nav-link px-2" style="color: darkgreen;">Create A Dance</a></li>
-                    <li><a href="../public/userFeedback.php" class="nav-link px-2" style="color: darkgreen;">Read Feedback</a></li>
+                    <li><a href="userFeedback.php" class="nav-link px-2" style="color: darkgreen;">Read Feedback</a></li>
                     <li><a href="feedback.php" class="nav-link px-2" style="color: darkgreen;"> Give Feedback</a></li>
                     <!-- <li><a href="aboutUs.php" class="nav-link px-2" style="color: darkgreen;">About Us</a></li> -->
                 </ul>
                 <!-- Search Box -->
                 <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <form action="../public/search.html" method="get" class="d-flex" onsubmit="return handleSearch(event)">
+                    <form action="search.html" method="get" class="d-flex" onsubmit="return handleSearch(event)">
                         <input type="text" name="q" id="toolbarSearchInput" class="form-control" placeholder="Search..." aria-label="Search">
                         <button type="submit" class="btn btn-light" style="border-color: #FFDF00; color: #FFDF00; margin-left: 5px;">Go</button>
                     </form>

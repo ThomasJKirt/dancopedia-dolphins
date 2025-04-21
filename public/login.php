@@ -15,6 +15,7 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result);
+        $_SESSION['user_type'] = $row['user_type'];
         $_SESSION['username'] = $row['username'];
         if ($row['user_type'] == 'admin') {
             $_SESSION['admin_name'] = $row['username'];

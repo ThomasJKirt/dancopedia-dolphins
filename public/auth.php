@@ -14,7 +14,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
 // Check login
 function requireLogin() {
-    if (!isset($_SESSION['email'])) {
+    if (!isset($_SESSION['username'])) {
         header("Location: login.php?auth_required=1");
         exit();
     }
@@ -23,8 +23,10 @@ function requireLogin() {
 // Check admin
 function requireAdmin() {
     requireLogin();
+
     if ($_SESSION['user_type'] !== 'admin') {
-        header("Location: userhome.php?unauthorized=1");
+        header("Location: userhome.php");
+        var_dump($_SESSION['user_type']);
         exit();
     }
 }
@@ -32,9 +34,5 @@ function requireAdmin() {
 // Check user
 function requireUser() {
     requireLogin();
-    if ($_SESSION['user_type'] !== 'user') {
-        header("Location: adminhome.php?unauthorized=1");
-        exit();
-    }
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 @include '../src/config/database.php';
 
-require_once '/auth.php';// include the auth script
+require_once 'auth.php';// include the auth script
 requireLogin(); // require to login
 
 $success = isset($_GET['success']) && $_GET['success'] == 1;
