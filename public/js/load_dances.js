@@ -42,7 +42,7 @@ function loadDances(region = null, category = null) {
 
     const requestBody = JSON.stringify({ region, category });
 
-    fetch("../src/api/fetch_dances.php", {
+    fetch("/src/api/fetch_dances.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: requestBody
@@ -109,7 +109,7 @@ function loadDances(region = null, category = null) {
             danceContainer.innerHTML = "<p>Loading dance...</p>";
             
             //This calls the backend api to fetch the dance details from the db
-            fetch("../src/api/fetch_dances.php", {
+            fetch("/src/api/fetch_dances.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id: danceId })
