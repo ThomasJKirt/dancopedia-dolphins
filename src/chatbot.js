@@ -10,7 +10,12 @@ dotenv.config({ path: "config/.env" });
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}));
+
 
 const logFile = path.resolve("chatbot.log");
 const log = (message) => {
@@ -131,6 +136,7 @@ app.post("/chat", async (req, res) => {
 });
 
 const PORT = 3000;
-app.listen(PORT, () => {
-  log(`✅ Chatbot server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  log(`✅ Chatbot server running on http://0.0.0.0:${PORT}`);
 });
+
