@@ -199,7 +199,7 @@ if (!isset($_SESSION['user_name']) && !isset($_SESSION['admin_name'])) {
             formData.append('dance_image', danceImageFile);
         }
 
-        fetch('../src/api/create_dance.php', {
+        fetch('/src/api/create_dance.php', {
             method: 'POST',
             body: formData
         })
