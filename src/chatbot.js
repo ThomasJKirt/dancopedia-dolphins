@@ -4,7 +4,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mysql from "mysql2/promise";
 import fs from "fs";
-import path from "path";
 
 dotenv.config({ path: "config/.env" });
 
