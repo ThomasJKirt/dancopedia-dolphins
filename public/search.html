@@ -172,7 +172,7 @@
       return;
     }
 
-    fetch("../src/api/dance_search.php?search=" + encodeURIComponent(query))
+    fetch("/src/api/dance_search.php?search=" + encodeURIComponent(query))
             .then(response => response.json())
             .then(data => {
               const danceContainer = document.getElementById("danceContainer");
