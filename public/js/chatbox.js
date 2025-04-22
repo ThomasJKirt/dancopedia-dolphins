@@ -55,7 +55,7 @@ function initializeChatbox() {
         inputField.value = "";
 
         try {
-            const response = await fetch("http://dancopedia-brazil.com/chat", {
+            const response = await fetch("https://dancopedia-brazil.com/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: messageText }),
