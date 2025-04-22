@@ -95,7 +95,7 @@ $isAdmin = isset($_SESSION["admin_name"]);
     function deleteDance(danceId) {
       if (!confirm("Are you sure you want to delete this dance?")) return;
 
-      fetch("../src/api/deleteDance.php", {
+      fetch("api/deleteDance.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -180,7 +180,7 @@ $isAdmin = isset($_SESSION["admin_name"]);
         const updatedCategoryText = updatedCategorySelect.options[updatedCategorySelect.selectedIndex].text;
 
 
-        fetch("../src/api/updateDance.php", {
+        fetch("../api/updateDance.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

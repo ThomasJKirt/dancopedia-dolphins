@@ -1,6 +1,7 @@
 <?php
 
-@include '../src/config/database.php';
+require_once __DIR__ . '/../src/config/database.php';
+
 
 if (isset($_POST['submit'])) {
 

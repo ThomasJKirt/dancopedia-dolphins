@@ -95,7 +95,7 @@
 <script>
   // Load approved dances and cluster them by proximity
   function loadMapDances() {
-    fetch('../src/api/fetch_map_dances.php')
+    fetch('api/fetch_map_dances.php')
             .then(response => response.json())
             .then(data => {
               if (data.error) {

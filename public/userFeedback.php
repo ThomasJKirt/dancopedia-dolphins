@@ -69,7 +69,7 @@ if(!isset($_SESSION["admin_name"])) {
 
   <!-- Load Feedback Table -->
   <script>
-    fetch("../src/api/fetch_feedback.php")
+    fetch("api/fetch_feedback.php")
       .then(res => res.json())
       .then(data => {
         if (!data.length) {
