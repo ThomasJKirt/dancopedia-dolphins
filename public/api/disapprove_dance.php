@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../../src/config/database.php';
 
 header("Content-Type: application/json");
 

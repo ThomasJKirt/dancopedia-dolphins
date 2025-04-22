@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../../src/config/database.php';
 session_start();
 
 // This ensures user is logged in as admin before perfoming the update

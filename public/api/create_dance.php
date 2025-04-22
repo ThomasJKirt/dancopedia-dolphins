@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../../src/config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form fields
