@@ -62,6 +62,7 @@ function initializeChatbox() {
             });
 
             const data = await response.json();
+            console.log(data);
             const aiReply = data.response || "No response.";
 
             const aiMessage = document.createElement("div");
