@@ -69,6 +69,7 @@ Table: region
 Respond with only the SQL query if a query is needed. Otherwise, answer naturally.
 Only use SELECT queries. Never use INSERT, UPDATE, DELETE, DROP, ALTER, CREATE, or any statement that changes data.
 
+Reject any chat not about brazilian dances.
 `
 };
 
