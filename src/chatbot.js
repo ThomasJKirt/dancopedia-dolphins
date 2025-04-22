@@ -1,19 +1,12 @@
 import Groq from "groq-sdk";
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 import mysql from "mysql2/promise";
 import fs from "fs";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import path from "path";
-import dotenv from "dotenv";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const envPath = path.resolve(__dirname, "../../src/config/.env");
-dotenv.config({ path: envPath });
-
+dotenv.config({ path: "config/.env" });
 
 const app = express();
 app.use(express.json());
