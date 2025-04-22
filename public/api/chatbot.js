@@ -6,7 +6,8 @@ import mysql from "mysql2/promise";
 import fs from "fs";
 import path from "path";
 
-dotenv.config({ path: "/../../src/config/.env" });
+const envPath = path.resolve(__dirname, "../../src/config/.env");
+dotenv.config({ path: envPath });
 
 const app = express();
 app.use(express.json());
