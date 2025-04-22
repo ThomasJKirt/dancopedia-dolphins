@@ -97,17 +97,22 @@ app.post("/chat", async (req, res) => {
 
     const forbiddenPatterns = [
       /\b(insert|update|delete|drop|alter|truncate|create|replace|grant|revoke)\b/i,
-      /--/,       // inline comments (potential SQL injection)
-      /;/         // multiple statements
+      /--/,
+      /;/
     ];
 
     const isMalicious = forbiddenPatterns.some((pattern) => pattern.test(aiOutput));
 
-    if (!isSQL || isMalicious) {
-      const reason = isMalicious ? "Potentially unsafe SQL detected. Rejected." : "AI Natural Response.";
-      log(`${reason}\n${aiOutput}`);
-      return res.status(400).json({ error: "Unsafe or unsupported query rejected." });
+    if (isMalicious) {
+      log(`❌ Potentially unsafe SQL detected:\n${aiOutput}`);
+      return res.status(400).json({ error: "Unsafe query rejected." });
     }
+
+    if (!isSQL) {
+      log(`✅ AI Natural Response:\n${aiOutput}`);
+      return res.json({ response: aiOutput });
+    }
+
 
 
     // Step 3: Execute the SQL query
