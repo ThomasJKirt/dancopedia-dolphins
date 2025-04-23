@@ -48,7 +48,7 @@ if (isset($_POST["email"])) {
 }
 
 if ($conn->affected_rows) {
-    $mail = require "../src/api/mail_password_reset.php";
+    $mail = require "api/mail_password_reset.php";
     $mail->setFrom("brazildances26@gmail.com");
     $mail->addAddress($email);
     $mail->Subject = "Reset Password";
