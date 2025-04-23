@@ -5,6 +5,7 @@
 if (isset($_POST['submit'])) {
 
     $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
     $pass = md5($_POST['password']);
     $cpass = md5($_POST['cpassword']);
     $user_type = 'user';
@@ -19,11 +20,12 @@ if (isset($_POST['submit'])) {
         if ($pass != $cpass) {
             $error[] = 'password not matched!';
         } else {
-            $insert = "INSERT INTO users_form(username, password, user_type) VALUES('$name','$pass','$user_type')";
+            $insert = "INSERT INTO users_form(username, email, password, user_type) VALUES('$name','$email','$pass','$user_type')";
             mysqli_query($conn, $insert);
             header('location:login.php');
         }
     }
+
 };
 
 ?>
@@ -54,6 +56,7 @@ if (isset($_POST['submit'])) {
         }
         ?>
         <input type="text" name="name" required placeholder="enter your name">
+        <input type="email" name="email" required placeholder="enter your email">
         <input type="password" name="password" required placeholder="enter your password">
         <input type="password" name="cpassword" required placeholder="confirm your password">
         <input type="submit" name="submit" value="register now" class="form-btn">
