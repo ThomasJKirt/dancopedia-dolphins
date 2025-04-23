@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (move_uploaded_file($_FILES['dance_image']['tmp_name'], $targetFile)) {
-            $mediaPath = 'assets/images/' . $filename;
+            $mediaPath = '../assets/images/' . $filename;
             $altText   = $dance_name . ' image';
 
             $stmtMedia = $conn->prepare("INSERT INTO media (media_url, alttext) VALUES (?, ?)");

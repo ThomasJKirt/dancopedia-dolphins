@@ -1,5 +1,5 @@
 <?php
-@include '/../../src/config/database.php';
+require __DIR__ . '/../../src/config/database.php';
 session_start();
 if (!isset($_SESSION['admin_name']) && !isset($_SESSION['user_name'])) {
     header("Location: login.php");
