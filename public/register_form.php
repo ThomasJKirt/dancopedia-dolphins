@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $pass = md5($_POST['password']);
     $cpass = md5($_POST['cpassword']);
-    $user_type = $_POST['user_type'];
+    $user_type = 'user';
 
     $select = " SELECT * FROM users_form WHERE username = '$name' && password = '$pass' ";
 
@@ -56,10 +56,6 @@ if (isset($_POST['submit'])) {
         <input type="text" name="name" required placeholder="enter your name">
         <input type="password" name="password" required placeholder="enter your password">
         <input type="password" name="cpassword" required placeholder="confirm your password">
-        <select name="user_type">
-            <option value="user">user</option>
-            <option value="admin">admin</option>
-        </select>
         <input type="submit" name="submit" value="register now" class="form-btn">
         <p>already have an account? <a href="login.php">login now</a></p>
     </form>
