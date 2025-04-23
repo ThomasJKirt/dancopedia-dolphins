@@ -1,5 +1,5 @@
 <?php
-@include '/../../src/config/database.php';
+require __DIR__ . '/../../src/config/database.php';
 session_start();
 if (!isset($_SESSION['admin_name']) && !isset($_SESSION['user_name'])) {
     header("Location: login.php");
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      VALUES ('$username', '$fname', '$lname', '$continent', '$feedback', NOW())";
 
     if (mysqli_query($conn, $insert_query)) {
-        header('Location: ../../public/feedback.php?success=1');
+        header('Location: /../feedback.php?success=1');
         exit();
     } else {
         die('Error submitting feedback: ' . mysqli_error($conn));
