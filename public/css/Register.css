@@ -45,6 +45,7 @@ body {
 /* Input and select field styling */
 .form-container input[type="text"],
 .form-container input[type="password"],
+.form-container input[type="email"],
 .form-container select {
     width: 100%;
     padding: 0.75rem;
@@ -53,6 +54,7 @@ body {
     border-radius: 5px;
     outline: none;
 }
+
 
 /* Submit button styling */
 .form-container input[type="submit"] {
