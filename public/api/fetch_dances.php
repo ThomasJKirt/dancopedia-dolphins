@@ -1,15 +1,21 @@
 <?php
 require __DIR__ . '/../../src/config/database.php';
 
+// Set headers for UTF-8 output
+header("Content-Type: application/json; charset=UTF-8");
+mb_internal_encoding("UTF-8");
+mysqli_set_charset($conn, "utf8mb4");
+
+// Enable error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-header("Content-Type: application/json");
 
 // Ensure connection is successful
 if ($conn->connect_error) {
     echo json_encode(["error" => "Connection failed: " . $conn->connect_error]);
     exit;
 }
+
 // Read POST data
 $filters = json_decode(file_get_contents("php://input"), true);
 $id = isset($filters['id']) ? (int)$filters['id'] : null;
@@ -17,7 +23,7 @@ $region = isset($filters['region']) ? $conn->real_escape_string($filters['region
 $category = isset($filters['category']) ? $conn->real_escape_string($filters['category']) : null;
 $approved = isset($filters['approved']) ? (int)$filters['approved'] : null;
 
-// Debugging: Log received data
+// Debug: Log input
 error_log("ID: " . ($id ?? "NULL") . " | Region: " . ($region ?? "NULL") . " | Category: " . ($category ?? "NULL"));
 
 $sql = "
@@ -38,30 +44,26 @@ $sql = "
 // Apply filters
 $conditions = [];
 
-
-//Checks if these fields are included and not empty to perform the query that meets these conditions
 if (!empty($id)) {
     $conditions[] = "dances.dance_id = $id";
 }
-
 if (!empty($region)) {
     $conditions[] = "region.region_name = '$region'";
 }
 if (!empty($category)) {
     $conditions[] = "dance_categories.category_name = '$category'";
 }
-
 if (!empty($approved)) {
     $conditions[] = "dances.approved = $approved";
+} else {
+    $conditions[] = "dances.approved = 1";
 }
-else ($conditions[] = "dances.approved = 1");
 
-// Append WHERE clause if needed
 if (!empty($conditions)) {
     $sql .= " WHERE " . implode(" AND ", $conditions);
 }
 
-// Debugging: Log the final SQL query
+// Debug: Log query
 error_log("Final SQL Query: " . $sql);
 
 $result = $conn->query($sql);
@@ -83,5 +85,5 @@ if ($result && $result->num_rows > 0) {
     error_log("No dances found for the query.");
 }
 
-echo json_encode($dances);
+echo json_encode($dances, JSON_UNESCAPED_UNICODE);
 $conn->close();
