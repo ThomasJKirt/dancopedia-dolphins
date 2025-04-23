@@ -61,7 +61,7 @@ session_start();
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="../public/logout.php">Sign out</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
                         </ul>
                     </div>
                 <?php endif; ?>

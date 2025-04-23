@@ -27,7 +27,7 @@ $success = isset($_GET['success']) && $_GET['success'] == 1;
     <?php if ($success): ?>
         <div class="alert">Feedback submitted successfully!</div>
     <?php endif; ?>
-    <form action="../src/api/submit_feedback.php" method="post">
+    <form action="api/submit_feedback.php" method="post">
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="fname" placeholder="Your first name..">
 

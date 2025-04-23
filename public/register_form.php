@@ -1,6 +1,6 @@
 <?php
 
-@include '../src/config/database.php';
+@include '/src/config/database.php';
 
 if (isset($_POST['submit'])) {
 
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register form</title>
-    <link rel="stylesheet" href="../public/css/Register.css">
+    <link rel="stylesheet" href="css/Register.css">
 </head>
 <body>
 

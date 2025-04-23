@@ -84,7 +84,7 @@ requireAdmin(); // only allow users with 'admin' role
 
         // --- Approve/Delete Dances Table Loading ---
         function loadDances() {
-            fetch('../src/api/fetch_dances.php', {
+            fetch('api/fetch_dances.php', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({approved: 2})
@@ -161,7 +161,7 @@ requireAdmin(); // only allow users with 'admin' role
                 alert('Please select at least one dance to approve.');
                 return;
             }
-            fetch('../src/api/approve_dance.php', {
+            fetch('api/approve_dance.php', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({danceIds: selectedIds})
@@ -184,7 +184,7 @@ requireAdmin(); // only allow users with 'admin' role
             if(!confirm('Are you sure you want to delete the selected dances?')) {
                 return;
             }
-            fetch('../src/api/disapprove_dance.php', {
+            fetch('api/disapprove_dance.php', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({danceIds: selectedIds})
@@ -201,7 +201,7 @@ requireAdmin(); // only allow users with 'admin' role
         // The DataTable will use AJAX to fetch all dances data.
         $('#all-dances-table').DataTable({
             "ajax": {
-                "url": "../src/api/fetch_dances.php",  // Adjust endpoint if necessary.
+                "url": "api/fetch_dances.php",  // Adjust endpoint if necessary.
                 "type": "POST",
                 "contentType": "application/json",
                 "data": function(d) {

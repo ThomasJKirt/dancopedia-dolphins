@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="../public/css/Password.css">
+    <link rel="stylesheet" href="css/Password.css">
     <style>
         /* Modal Styles */
         .modal {

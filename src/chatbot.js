@@ -4,13 +4,27 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mysql from "mysql2/promise";
 import fs from "fs";
-import path from "path";
 
-dotenv.config({ path: "../../.env" });
+dotenv.config({ path: "config/.env" });
 
 const app = express();
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Needed for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, "/../public")));
+
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}));
+
 
 const logFile = path.resolve("chatbot.log");
 const log = (message) => {
@@ -55,6 +69,7 @@ Table: region
 Respond with only the SQL query if a query is needed. Otherwise, answer naturally.
 Only use SELECT queries. Never use INSERT, UPDATE, DELETE, DROP, ALTER, CREATE, or any statement that changes data.
 
+Reject any chat not about brazilian dances.
 `
 };
 
@@ -83,17 +98,22 @@ app.post("/chat", async (req, res) => {
 
     const forbiddenPatterns = [
       /\b(insert|update|delete|drop|alter|truncate|create|replace|grant|revoke)\b/i,
-      /--/,       // inline comments (potential SQL injection)
-      /;/         // multiple statements
+      /--/,
+      /;/
     ];
 
     const isMalicious = forbiddenPatterns.some((pattern) => pattern.test(aiOutput));
 
-    if (!isSQL || isMalicious) {
-      const reason = isMalicious ? "Potentially unsafe SQL detected. Rejected." : "AI Natural Response.";
-      log(`${reason}\n${aiOutput}`);
-      return res.status(400).json({ error: "Unsafe or unsupported query rejected." });
+    if (isMalicious) {
+      log(`❌ Potentially unsafe SQL detected:\n${aiOutput}`);
+      return res.status(400).json({ error: "Unsafe query rejected." });
     }
+
+    if (!isSQL) {
+      log(`✅ AI Natural Response:\n${aiOutput}`);
+      return res.json({ response: aiOutput });
+    }
+
 
 
     // Step 3: Execute the SQL query
@@ -131,6 +151,7 @@ app.post("/chat", async (req, res) => {
 });
 
 const PORT = 3000;
-app.listen(PORT, () => {
-  log(`✅ Chatbot server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  log(`✅ Chatbot server running on http://0.0.0.0:${PORT}`);
 });
+

@@ -53,7 +53,7 @@ else if($user_type=="guest"){
     <section class="one">
       <div class="background">
         <div class="scrollContainer">
-          <img src="../../public/assets/images/brazil_flag.jpg" alt="Brazil Flag" class="flag">
+          <img src="../assets/images/brazil_flag.jpg" alt="Brazil Flag" class="flag">
           <h1>Catagories</h1>
           <div class="danceContainer" id="danceContainer">
             <div class="Catagories">
@@ -88,7 +88,7 @@ else if($user_type=="guest"){
                   <a href="#!" class="nav-link">
                     <div class="position-relative"
                       style="width:40px; height: 40px; border-radius: 50% ; border: 2px solid #e84118; padding: 2px;">
-                      <img src="../../public/assets/images/chatbox_face.jpg" class="img-fluid" alt=""
+                      <img src="../assets/images/chatbox_face.jpg" class="img-fluid" alt=""
                            style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
                       <span
                         class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
@@ -113,7 +113,7 @@ else if($user_type=="guest"){
           <div class="card-body p-4" style="height: 250px; overflow: auto;">
             <div class="d-flex align-items-baseline mb-4">
               <div class="position-relative avatar">
-                <img src="../../public/assets/images/chatbox_face.jpg" class="img-fluid" alt=""
+                <img src="../assets/images/chatbox_face.jpg" class="img-fluid" alt=""
                      style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
                 <span
                   class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">

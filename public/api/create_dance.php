@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../../src/config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form fields
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Prepare media (file upload) if provided
     $media_id = 'NULL';
     if (isset($_FILES['dance_image']) && $_FILES['dance_image']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = __DIR__ . '/../../public/assets/images';
+        $uploadDir = __DIR__ . 'assets/images';
         $filename  = time() . '_' . basename($_FILES['dance_image']['name']);
         $targetFile = $uploadDir . '/' . $filename;
 

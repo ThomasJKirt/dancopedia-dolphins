@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../../src/config/database.php';
 session_start();
 if (!isset($_SESSION["admin_name"])) {
     echo json_encode(["success" => false, "error" => "Unauthorized."]);
