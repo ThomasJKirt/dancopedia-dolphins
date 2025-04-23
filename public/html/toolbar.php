@@ -40,7 +40,7 @@ session_start();
                 <?php if (!isset($_SESSION['username'])): ?>
                     <div class="text-end">
                         <button type="button" class="btn btn-outline-light me-2" onclick="window.location.href='login.php'">Login</button>
-                        <button type="button" class="btn" style="background-color: lightgreen; color: darkgreen; border-color: darkgreen;" onclick="window.location.href='signup.php'">Sign-up</button>
+                        <button type="button" class="btn" style="background-color: lightgreen; color: darkgreen; border-color: darkgreen;" onclick="window.location.href='register_form.php'">Sign-up</button>
                     </div>
                 <?php else: ?>
                     <div class="dropdown text-end">
