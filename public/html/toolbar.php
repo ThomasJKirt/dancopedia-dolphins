@@ -56,8 +56,6 @@ session_start();
                             <li>
                                 <a class="dropdown-item" href="<?php echo isset($_SESSION['admin_name']) ? 'adminhome.php' : 'userhome.php'; ?>">Profile</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">Saved</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
