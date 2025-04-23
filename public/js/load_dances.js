@@ -111,7 +111,7 @@ function loadDances(region = null, category = null) {
             //This calls the backend api to fetch the dance details from the db
             fetch("api/fetch_dances.php", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json; charset=UTF-8" },
             body: JSON.stringify({ id: danceId })
             })
             .then(response => response.json())
